@@ -1,10 +1,13 @@
 // 반복 동기화 1회 실행. 스케줄러(cron 등)에서 60분 간격 호출을 가정한다(PRD 8.1, API 한도 검증 후 확정).
-// 사용: BAND_ACCESS_TOKEN=... node server/sync.js
+// 사용: npm run sync (토큰은 .env의 BAND_ACCESS_TOKEN 또는 환경 변수)
 // 소스 설정은 data/sources.json (예: data/sources.example.json 참고)
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { createBandClient, fetchRecentPosts, maskToken } from './band/client.js';
 import { upsertPosts } from './store.js';
+import { loadEnv } from './env.js';
+
+loadEnv();
 
 const DATA_DIR = new URL('../data/', import.meta.url);
 const STORE_FILE = new URL('store.json', DATA_DIR);

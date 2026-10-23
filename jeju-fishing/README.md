@@ -25,12 +25,19 @@ npm test       # 추출 규칙·저장 로직 단위 테스트
 | `server/store.js` | 허용 작성자 필터, 원문 ID 기준 갱신, 내용 해시로 변경 감지, 관리자 교정 유지, 삭제·동의 철회, 공개용 데이터 분리 | FR-001·011·012·013 |
 | `vercel.json` | Vercel 배포 설정(`web/`만 정적 배포) | - |
 | `server/sync.js` | 동기화 1회 실행(스케줄러에서 60분 간격 호출 가정) | 8.1 |
+| `server/band-auth.js`, `server/band/oauth.js` | 운영자 본인 BAND 토큰 발급(OAuth, 로컬 콜백), `.env`에 저장 | 4.1 |
+| `server/band-check.js`, `server/band/inspect.js` | 1단계 검증: 밴드 목록, 응답 필드표(값 제외), 페이지 처리, 작성자별 글 수 | 4.2, 12 |
 
-### BAND 동기화 시험 실행 (1단계 검증용)
+### BAND 연동 1단계 검증
+
+절차 전체는 [docs/BAND_SETUP.md](docs/BAND_SETUP.md)에 있습니다.
 
 ```bash
+cp .env.example .env                        # BAND_CLIENT_ID, BAND_CLIENT_SECRET 입력
+npm run band:auth                           # 운영자 토큰 발급 → .env에 저장
+npm run band:check -- --band <band_key>     # 응답 필드표·작성자 user_key 확인
 cp data/sources.example.json data/sources.json   # band_key, 허용 작성자 user_key, 동의 범위 입력
-BAND_ACCESS_TOKEN=... npm run sync                # 결과는 data/store.json (git 제외)
+npm run sync                                # 결과는 data/store.json (git 제외)
 ```
 
 수집한 글은 `visibility: "review"` 상태로 저장되어, 관리자가 승인하기 전에는 공개되지 않습니다.

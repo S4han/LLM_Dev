@@ -8,6 +8,8 @@
   "scripts": {
     "start": "node server/dev-server.js",
     "test": "node --test test/*.test.js",
-    "sync": "node server/sync.js"
+    "sync": "node server/sync.js",
+    "band:auth": "node server/band-auth.js",
+    "band:check": "node server/band-check.js"
   }
 }
