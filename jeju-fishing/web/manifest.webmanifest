@@ -1,0 +1,13 @@
+{
+  "name": "제주 조황 모아보기",
+  "short_name": "제주조황",
+  "start_url": "./#/feed",
+  "display": "standalone",
+  "background_color": "#f4f6f8",
+  "theme_color": "#0b5c7a",
+  "lang": "ko",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

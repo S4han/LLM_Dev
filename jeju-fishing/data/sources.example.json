@@ -1,0 +1,13 @@
+[
+  {
+    "bandKey": "BAND_KEY_FROM_LIST_BANDS",
+    "vesselId": "v1",
+    "active": true,
+    "allowedAuthorKeys": ["USER_KEY_OF_APPROVED_AUTHOR"],
+    "consent": {
+      "scope": ["text", "photos", "summary"],
+      "grantedAt": "2026-10-23",
+      "evidence": "동의서 보관 위치 등"
+    }
+  }
+]
