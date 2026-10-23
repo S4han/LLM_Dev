@@ -47,8 +47,8 @@ BAND_ACCESS_TOKEN=... npm run sync                # 결과는 data/store.json (g
 
 `web/`은 빌드 단계가 없는 정적 사이트입니다. 서버 코드(`server/`)와 데이터는 배포되지 않습니다.
 
-**Vercel** — Add New → Project → GitHub `s4han/llm_dev` 가져오기 → Root Directory를 `jeju-fishing`로 지정 → Deploy.
-나머지 설정은 `vercel.json`에 있습니다. 이후 push할 때마다 자동으로 배포됩니다(main은 프로덕션, 다른 브랜치는 미리보기).
+**Vercel** — Add New → Project → GitHub `s4han/llm_dev` 가져오기 → Root Directory는 `./` 그대로 → Deploy.
+저장소 최상위 `vercel.json`이 `jeju-fishing/web`을 배포합니다(Root Directory를 `jeju-fishing`으로 지정해도 `jeju-fishing/vercel.json`으로 동작). 이후 push할 때마다 자동으로 배포됩니다(main은 프로덕션, 다른 브랜치는 미리보기).
 
 **Cloudflare Pages** — Workers & Pages → Create → Pages → Git 연결 → Root directory `jeju-fishing`, Build command 비움, Build output directory `web`.
 
